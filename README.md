@@ -74,3 +74,19 @@ This is new programming paradigm. This is going to be complete shift the way we 
 It also provides functional type programming. It also supports **Back Pressure** on data streams. 
 
 ![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/ImperativeVsReactive.jpg)
+
+As you can see in the above example in reactive programming you are not blocked, here data is flowing one by one as event. 
+In last when all the data is supplied, you will get onComplete() event. 
+
+**Error Flow :**
+
+If any exception happens after first onNext() call, in that case instead of abruptly exiting the execution flow which is how imperative style programming works, here it is going to send you an error event to let the application know something unexpected happen.
+
+In case of no data found you will get the onComplete() event from the database layer. In case of saving the data(as it is void method) you will get onComplete event after saving data.
+
+![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/ReactiveErrorFlow.jpeg)
+
+#### Summary- data Flow as an Event Driven stream
+- onNext(item) -> Data Stream events
+- onComplete() -> Completion/Success event
+- onError() -> Error event
