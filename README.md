@@ -90,3 +90,33 @@ In case of no data found you will get the onComplete() event from the database l
 - onNext(item) -> Data Stream events
 - onComplete() -> Completion/Success event
 - onError() -> Error event
+
+## Reactive Stream Specification
+As in Object Orient programming we have some specifications like inheritance, abstractions etc. Similarly, for reactive streams we have some specifications/rules. Engineers from major
+companies like Pivotal, Netflix, LightBend & twitter etc got together and created the reactive stream specifications.Reactive streams has four interfaces.
+- Publisher
+- Subscriber
+- Subscription
+- Processor
+All these interfaces talk to each other in order for the whole reactive stream to flow.
+  
+#### Publisher
+This is the simple interface with one method.
+
+```java
+public interface Publisher<T> {
+  public void subscribe(Subscriber<? super <T> s);
+}
+```
+It represents the **Data Source** eg data base.
+
+#### Subscriber
+```java
+public interface Subscriber<T>{
+    public void onSubscribe(Subscription s);
+    public void onNext(T t);
+    public void onError(Throwable t);
+    public void onComplete();
+}
+```
+
