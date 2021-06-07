@@ -62,3 +62,10 @@ Considering the above limitations of Future, java-8 introduced **Completable Fut
 
 Another disadvantage of imperative programming is there is no option to handle **Back Pressure**. If you see in below example if thousands of requests are triggered the there might be case that client cannot handle data and can leads to memory out of bound issue. There is no way to tell DB to slow down as client already has a lot of data to handle.
 ![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/NoBackPressure.jpeg)
+
+#### What is better API Design?
+- Asynchronous and Non Blocking
+- Move away from Thread per request model
+- Use fewer threads.
+- Back Pressure compatible
+
