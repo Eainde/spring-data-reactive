@@ -33,4 +33,32 @@ This model work perfect and will work in future too. But if you take a look spin
 
 ### Traditional Rest API
 If you can see the below example, this style of coding is called **Imperative Stryle APIs** where the execution goes top-down approach. Imperative style APIs by its nature are **synchronous** & **blocking**.   
+
 ![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/ImperativeCode.jpeg)
+
+Imperative style programming leads to inefficient use of resources. 
+
+If we want to make it asynchronous & non blocking then in java currently we have two options.
+- Callbacks
+- Futures
+
+#### Callbacks
+Callbacks are not great options. There are few drawbacks listed below.
+- Complex
+- No return value
+- Code is hard to read and maintain
+- Leads to callback hell
+
+#### Future
+Future is a another alternative to write asynchronous code in java.
+- It returns Future instance
+- Hard to compose multiple asynchronous operations.
+
+#### Completable Future
+Considering the above limitations of Future, java-8 introduced **Completable Future**.
+- Supports functional style API.
+- Easy to compose multiple asynchronous operations.
+- It is not a great fit for asynchronous methods which involves multiple items in response and error handling is not that great too. We need to do lot of plumbing to make it work right. 
+
+Another disadvantage of imperative programming is there is no option to handle **Back Pressure**. If you see in below example if thousands of requests are triggered the there might be case that client cannot handle data and can leads to memory out of bound issue. There is no way to tell DB to slow down as client already has a lot of data to handle.
+![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/NoBackPressure.jpeg)
