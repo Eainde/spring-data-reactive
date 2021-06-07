@@ -69,3 +69,8 @@ Another disadvantage of imperative programming is there is no option to handle *
 - Use fewer threads.
 - Back Pressure compatible
 
+## Reactive Programming
+This is new programming paradigm. This is going to be complete shift the way we are building things in java. This programming style is fundamentally **Asynchronous and Non-Blocking** and data flow as an **Event/Message Driven** stream.
+It also provides functional type programming. It also supports **Back Pressure** on data streams. 
+
+![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/ImperativeVsReactive.jpg)
