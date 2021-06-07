@@ -119,4 +119,14 @@ public interface Subscriber<T>{
     public void onComplete();
 }
 ```
+![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/Publisher-SubscriberEventFlow.jpeg)
 
+#### Subscription
+It has two methods.
+
+```java
+public interface Subscription{
+    public void request(long n);
+    public void cancel();
+}
+```
