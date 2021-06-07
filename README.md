@@ -13,3 +13,6 @@
 
 ### Spring MVC Request/Response Flow
 ![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/SpringMVCFlow.png)
+
+**Handling Concurrent requests in traditional restful API's**
+![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/ThreadPerModel.png)
