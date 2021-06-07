@@ -26,5 +26,7 @@ server.tomcat.max-threads = 300
 By increasing the size of thread pool can cause memory issue. Each thread takes some memory and the common stack size is 1MB. Higher the thread pool size, higher the memory consumption. If you have a larger thread pool that leaves you with very less memory for the application processing, which eventually means the application will perform poor with less memory available.
 
 How it is handled today?
-- Most popular approach today to handle the load is **horizontal scaling**. Here we can have multiple instance of the application.
+- Most popular approach today to handle the load is **horizontal scaling**. Here we can have multiple instance of the application. This can be done by kubernates or some other container orchestration.
   ![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/horizontalScaling.jpg)
+  
+This model work perfect and will work in future too. But if you take a look spinning up more instances in cloud is going to add some kind of additional cost.
