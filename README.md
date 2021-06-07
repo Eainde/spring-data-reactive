@@ -130,3 +130,14 @@ public interface Subscription{
     public void cancel();
 }
 ```
+![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/Publisher-SubscriptionEventFlow.jpeg)
+
+#### Processor
+It is the combination of bot subscriber and publisher. Thats why you do not see any specific methods for this.
+
+```java
+public interface Processor<T, R> extends Subscriber<T>, Publisher<R>{
+    
+}
+```
+
