@@ -30,3 +30,7 @@ How it is handled today?
   ![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/horizontalScaling.jpg)
   
 This model work perfect and will work in future too. But if you take a look spinning up more instances in cloud is going to add some kind of additional cost.
+
+### Traditional Rest API
+If you can see the below example, this style of coding is called **Imperative Stryle APIs** where the execution goes top-down approach. Imperative style APIs by its nature are **synchronous** & **blocking**.   
+![](https://github.com/Eainde/spring-data-reactive/blob/main/src/main/resources/images/ImperativeCode.jpeg)
