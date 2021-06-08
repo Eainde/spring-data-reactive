@@ -9,7 +9,7 @@ import com.eainde.reactive.entity.Book;
 import com.eainde.reactive.repository.BookRepository;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/book")
 public class BookController {
   private final BookRepository bookRepository;
 
@@ -17,22 +17,22 @@ public class BookController {
     this.bookRepository = bookRepository;
   }
 
-  @GetMapping("")
+  @GetMapping("/")
   public Flux<Book> getBooks() {
     return bookRepository.findAll();
   }
 
-  @PostMapping("")
+  @PostMapping("/")
   public Mono<Book> saveBook(@RequestBody Book book) {
     return bookRepository.save(book);
   }
 
-  @PutMapping("")
+  @PutMapping("/")
   public Mono<Book> updateBook(@RequestBody Book book) {
     return bookRepository.save(book);
   }
 
-  @DeleteMapping("")
+  @DeleteMapping("/")
   public boolean deleteBook(@RequestBody Book book) {
     try {
       bookRepository.deleteById(book.getId()).block();
