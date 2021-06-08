@@ -1,14 +1,13 @@
 package com.eainde.reactive.handler;
 
+import com.eainde.reactive.entity.User;
+import com.eainde.reactive.service.UserService;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-
 import reactor.core.publisher.Mono;
-
-import com.eainde.reactive.entity.User;
-import com.eainde.reactive.service.UserService;
 
 @Component
 public class UserHandlerFunction {

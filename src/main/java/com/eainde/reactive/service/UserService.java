@@ -1,11 +1,10 @@
 package com.eainde.reactive.service;
 
-import org.springframework.stereotype.Service;
-
-import reactor.core.publisher.Flux;
-
 import com.eainde.reactive.entity.User;
 import com.eainde.reactive.repository.UserRepository;
+
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
 @Service
 public class UserService {

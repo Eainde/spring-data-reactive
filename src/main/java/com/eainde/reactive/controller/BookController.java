@@ -1,12 +1,12 @@
 package com.eainde.reactive.controller;
 
+import com.eainde.reactive.entity.Book;
+import com.eainde.reactive.repository.BookRepository;
+
 import org.springframework.web.bind.annotation.*;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import com.eainde.reactive.entity.Book;
-import com.eainde.reactive.repository.BookRepository;
 
 @RestController
 @RequestMapping("/book")

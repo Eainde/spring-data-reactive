@@ -1,7 +1,7 @@
 package com.eainde.reactive.repository;
 
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
-
 import com.eainde.reactive.entity.User;
+
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
 public interface UserRepository extends ReactiveCrudRepository<User, Long> {}

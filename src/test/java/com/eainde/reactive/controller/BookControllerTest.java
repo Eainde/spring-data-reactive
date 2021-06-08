@@ -1,5 +1,9 @@
 package com.eainde.reactive.controller;
 
+import com.eainde.reactive.entity.Book;
+import com.eainde.reactive.entity.User;
+import com.eainde.reactive.repository.BookRepository;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,10 +18,6 @@ import org.springframework.web.reactive.function.BodyInserters;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import com.eainde.reactive.entity.Book;
-import com.eainde.reactive.entity.User;
-import com.eainde.reactive.repository.BookRepository;
 
 @ExtendWith(SpringExtension.class)
 @WebFluxTest(controllers = BookController.class)
