@@ -8,19 +8,19 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 import com.eainde.reactive.entity.User;
-import com.eainde.reactive.repository.UserRepository;
+import com.eainde.reactive.service.UserService;
 
 @Component
 public class UserHandlerFunction {
-  private final UserRepository userRepository;
+  private final UserService userService;
 
-  UserHandlerFunction(final UserRepository userRepository) {
-    this.userRepository = userRepository;
+  UserHandlerFunction(final UserService userService) {
+    this.userService = userService;
   }
 
   public Mono<ServerResponse> getAllUsers(ServerRequest serverRequest) {
     return ServerResponse.ok()
         .contentType(MediaType.APPLICATION_JSON)
-        .body(userRepository.findAll(), User.class);
+        .body(userService.findAll(), User.class);
   }
 }

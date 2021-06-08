@@ -1,18 +1,20 @@
 package com.eainde.reactive.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("user_info")
 public class User {
-  @Id private int id;
+  @Id private long id;
   private String name;
   private String country;
   private int age;
 
-  public int getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(long id) {
     this.id = id;
   }
 
