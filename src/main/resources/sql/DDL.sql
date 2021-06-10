@@ -1,3 +1,21 @@
+-- Database: eainde
+-- DROP DATABASE eainde;
+CREATE DATABASE eainde
+    WITH
+    OWNER = eainde
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'en_US.UTF-8'
+    LC_CTYPE = 'en_US.UTF-8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+
+-- SCHEMA: reactive
+-- DROP SCHEMA reactive ;
+CREATE SCHEMA reactive
+    AUTHORIZATION postgres;
+
+
 -- SEQUENCE: reactive.book_id_seq
 -- DROP SEQUENCE reactive.book_id_seq;
 CREATE SEQUENCE reactive.book_id_seq
