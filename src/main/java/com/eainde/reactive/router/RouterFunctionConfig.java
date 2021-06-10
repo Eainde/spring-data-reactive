@@ -3,15 +3,11 @@ package com.eainde.reactive.router;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
 
-import com.eainde.reactive.entity.User;
 import com.eainde.reactive.handler.UserHandlerFunction;
-
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import com.eainde.reactive.service.UserService;
 
 import org.springdoc.core.annotations.RouterOperation;
+import org.springdoc.core.annotations.RouterOperations;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -22,21 +18,24 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 @Configuration
 public class RouterFunctionConfig {
   @Bean
-  @RouterOperation(
-      operation =
-          @Operation(
-              operationId = "findAllUsers",
-              summary = "Find All Users",
-              tags = {"Users"},
-              responses = {
-                @ApiResponse(
-                    responseCode = "200",
-                    description = "successful operation",
-                    content = @Content(schema = @Schema(implementation = User.class))),
-                @ApiResponse(responseCode = "404", description = "Users not found")
-              }))
+  @RouterOperations({
+    @RouterOperation(path = "/users", beanClass = UserService.class, beanMethod = "getAllUsers"),
+    @RouterOperation(
+        path = "/user/{id}",
+        beanClass = UserService.class,
+        beanMethod = "getUserById"),
+    @RouterOperation(
+        path = "/user/{name}",
+        beanClass = UserService.class,
+        beanMethod = "getUserByName")
+  })
   public RouterFunction<ServerResponse> route(UserHandlerFunction handlerFunction) {
     return RouterFunctions.route(
-        GET("/user").and(accept(MediaType.APPLICATION_JSON)), handlerFunction::getAllUsers);
+            GET("/users").and(accept(MediaType.APPLICATION_JSON)), handlerFunction::getAllUsers)
+        .andRoute(
+            GET("/user/{id}").and(accept(MediaType.APPLICATION_JSON)), handlerFunction::getUserById)
+        .andRoute(
+            GET("/user/name/{name}").and(accept(MediaType.APPLICATION_JSON)),
+            handlerFunction::getUserByName);
   }
 }

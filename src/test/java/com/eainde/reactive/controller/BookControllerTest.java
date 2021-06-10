@@ -1,7 +1,10 @@
 package com.eainde.reactive.controller;
 
+import static org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.csrf;
+
 import com.eainde.reactive.entity.Book;
 import com.eainde.reactive.entity.User;
+import com.eainde.reactive.exception.GlobalErrorWebExceptionHandler;
 import com.eainde.reactive.repository.BookRepository;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -12,17 +15,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 @ExtendWith(SpringExtension.class)
-@WebFluxTest(controllers = BookController.class)
+@WebFluxTest(controllers = {BookController.class})
 class BookControllerTest {
   @Autowired private WebTestClient webTestClient;
+  @MockBean GlobalErrorWebExceptionHandler globalErrorWebExceptionHandler;
 
   @MockBean private BookRepository bookRepository;
   private Book book;
@@ -36,6 +42,7 @@ class BookControllerTest {
   }
 
   @Test
+  @WithMockUser(username = "Akshay", roles = "SUPERADMIN")
   void getBooks() {
     Mockito.when(bookRepository.findAll()).thenReturn(Flux.just(book));
 
@@ -49,13 +56,17 @@ class BookControllerTest {
             .isOk()
             .returnResult(User.class)
             .getResponseBody();
+
+    StepVerifier.create(bookFlux).expectSubscription().expectNextCount(1).verifyComplete();
   }
 
   @Test
+  @WithMockUser(username = "akshay", roles = "SUPERADMIN")
   void saveBook() {
     Mockito.when(bookRepository.save(book)).thenReturn(Mono.just(book));
 
     webTestClient
+        .mutateWith(csrf())
         .post()
         .uri("/book/")
         .accept(MediaType.APPLICATION_JSON)
@@ -68,10 +79,12 @@ class BookControllerTest {
   }
 
   @Test
+  @WithMockUser(username = "akshay", roles = "SUPERADMIN")
   void updateBook() {
     Mockito.when(bookRepository.save(book)).thenReturn(Mono.just(book));
 
     webTestClient
+        .mutateWith(csrf())
         .put()
         .uri("/book/")
         .accept(MediaType.APPLICATION_JSON)
