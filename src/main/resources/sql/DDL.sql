@@ -1,29 +1,34 @@
+-- SEQUENCE: reactive.book_id_seq
+-- DROP SEQUENCE reactive.book_id_seq;
 CREATE SEQUENCE reactive.book_id_seq
-	INCREMENT 1
-	START 1
-	MINVALUE 1
-	MAXVALUE 2147483647
-	CACHE 1;
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CACHE 1;
 
 ALTER SEQUENCE reactive.book_id_seq
-OWNER to postgres;
+    OWNER TO postgres;
 
-create TABLE reactive.book
+
+-- Table: reactive.book
+-- DROP TABLE reactive.book;
+CREATE TABLE IF NOT EXISTS reactive.book
 (
-	id integer NOT NULL DEFAULT nextval('reactive.book_id_seq'::regclass),
-	title text COLLATE pg_catalog."default" NOT NULL,
-	author text COLLATE pg_catalog."default" NOT NULL,
-	CONSTRAINT book_pkey PRIMARY KEY (id)
+    id integer NOT NULL DEFAULT nextval('reactive.book_id_seq'::regclass),
+    title text COLLATE pg_catalog."default" NOT NULL,
+    author text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT book_pkey PRIMARY KEY (id)
 )
+
 TABLESPACE pg_default;
 
 ALTER TABLE reactive.book
-OWNER to postgres;
+    OWNER to postgres;
+
 
 -- Table: reactive.appl_role
-
 -- DROP TABLE reactive.appl_role;
-
 CREATE TABLE IF NOT EXISTS reactive.appl_role
 (
     role_id integer NOT NULL,
@@ -38,10 +43,9 @@ TABLESPACE pg_default;
 ALTER TABLE reactive.appl_role
     OWNER to postgres;
 
+
 -- Table: reactive.appl_user
-
 -- DROP TABLE reactive.appl_user;
-
 CREATE TABLE IF NOT EXISTS reactive.appl_user
 (
     user_id integer NOT NULL,
@@ -60,10 +64,9 @@ TABLESPACE pg_default;
 ALTER TABLE reactive.appl_user
     OWNER to postgres;
 
+
 -- Table: reactive.user_role
-
 -- DROP TABLE reactive.user_role;
-
 CREATE TABLE IF NOT EXISTS reactive.user_role
 (
     user_id integer NOT NULL,
