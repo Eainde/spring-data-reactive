@@ -1,8 +1,8 @@
 -- Table: reactive.appl_user
-insert into reactive.appl_user (id, country, age, name, password, enabled) values (1, 'UK', 30, 'Akshay', 'jk+bb+gdGuu50Nn7hYGE+kGaPintdUxT/GVzT2Qo/K0=', true);
-insert into reactive.appl_user (id, country, age, name, password, enabled) values(2, 'UK', 33, 'Ashish', 'dQNjUIMorJb8Ubj2+wVGYp6eAeYkdekqAcnYp+aRq5w=', true);
-insert into reactive.appl_user (id, country, age, name, password, enabled) values(3, 'UK', 34, 'Praveen', 'cBrlgyL2GI2GINuLUUwgojITuIufFycpLG4490dhGtY=', true);
-insert into reactive.appl_user (id, country, age, name, password, enabled) values(4, 'UK', 34, 'Parshuram', 'cBrlgyL2GI2GINuLUUwgojITuIufFycpLG4490dhGtY=', true);
+insert into reactive.appl_user (user_id, country, age, name, password, enabled) values (1, 'UK', 30, 'Akshay', 'jk+bb+gdGuu50Nn7hYGE+kGaPintdUxT/GVzT2Qo/K0=', true);
+insert into reactive.appl_user (user_id, country, age, name, password, enabled) values(2, 'UK', 33, 'Ashish', 'dQNjUIMorJb8Ubj2+wVGYp6eAeYkdekqAcnYp+aRq5w=', true);
+insert into reactive.appl_user (user_id, country, age, name, password, enabled) values(3, 'UK', 34, 'Praveen', 'cBrlgyL2GI2GINuLUUwgojITuIufFycpLG4490dhGtY=', true);
+insert into reactive.appl_user (user_id, country, age, name, password, enabled) values(4, 'UK', 34, 'Parshuram', 'cBrlgyL2GI2GINuLUUwgojITuIufFycpLG4490dhGtY=', true);
 
 
 -- Table: reactive.appl_role
